@@ -3,7 +3,7 @@
 Landing page da **Pernambuco Peças para Compressores** — peças, manutenção, locação e
 consultoria em compressores parafuso multimarca em Pernambuco e no entorno.
 
-🔗 <https://www.pecompressores.com.br>
+🔗 <https://caioagrelli.github.io/pecompressores/>
 
 ## Sobre o projeto
 
@@ -83,9 +83,3 @@ Itens que dependem de informação da empresa antes de rodar tráfego pago:
 - [ ] **Fotos reais** das peças e da equipe em campo, no lugar das ilustrações
 - [ ] **Logos da Atlas Copco e da Ingersoll Rand** — hoje aparecem só como texto
 - [ ] Confirmar autorização de uso das marcas de fabricante exibidas no mural
-
-## Contato
-
-Pernambuco Peças para Compressores
-R. Campinas, 103 — Jardim São Paulo, Recife/PE, 50920-190
-(81) 98903-1791 · gerencia@pecompressores.com.br
