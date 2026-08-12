@@ -4,10 +4,12 @@ Contexto para assistentes de IA que forem trabalhar neste repositório.
 
 ## O que é
 
-Landing page da Pernambuco Peças para Compressores (PE Compressores), Recife/PE.
-B2B industrial: peças, manutenção, locação e consultoria em compressores parafuso
-multimarca. O público é gestor de manutenção de indústria — muitas vezes chegando ao
-site com uma máquina parada e a produção travada.
+**Protótipo de demonstração** de landing page para assistência técnica industrial —
+peças, manutenção, locação e consultoria em compressores parafuso multimarca, no
+Nordeste. O público simulado é gestor de manutenção de indústria, muitas vezes
+chegando ao site com uma máquina parada e a produção travada.
+
+Autoria e titularidade: Caio Agrelli. Nenhuma empresa encomendou este trabalho.
 
 ## Regra principal
 
@@ -53,17 +55,16 @@ pílula nos botões.
 
 ## Honestidade do conteúdo
 
-Este é um site comercial que vai receber tráfego pago. **Não invente fato nenhum.**
+Mesmo sendo protótipo, a página simula um negócio real e está publicada.
+**Não invente fato nenhum.**
 
 - Não crie depoimentos, nomes de clientes ou logos de empresas atendidas
-- Não adicione marcas de compressor à lista sem confirmação — a empresa atende
-  Atlas Copco, Ingersoll Rand, Schulz, Chicago Pneumatic, Kaeser, Metalplan, Mattei
-  e Sullair
+- Não adicione marcas de compressor à lista. As que aparecem (Atlas Copco, Ingersoll
+  Rand, Schulz, Chicago Pneumatic, Kaeser, Metalplan, Mattei e Sullair) estão a
+  título ilustrativo e pertencem aos respectivos titulares
 - Não invente preço, prazo de atendimento nem número de anos de mercado
 - Se falta um dado, deixe o item de fora e registre em "Pendências" no README —
   nunca publique `PREENCHER` ou texto de exemplo no ar
-
-A página já teve depoimentos-placeholder visíveis em produção. Foi corrigido.
 
 ## Detalhes de implementação
 
