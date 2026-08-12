@@ -1,0 +1,68 @@
+name: Verificação
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  checar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Placeholders esquecidos
+        run: |
+          if grep -nE 'PREENCHER|SUBSTITUIR|CONFIRMAR|\[Nome\]|\[Cargo\]|lorem ipsum' index.html; then
+            echo "::error::Placeholder visível no index.html"
+            exit 1
+          fi
+          echo "OK — nenhum placeholder"
+
+      - name: Dependência externa
+        run: |
+          externos=$(grep -oE '(src|href)="https?://[^"]+"' index.html \
+            | grep -vE 'wa\.me|google\.com/maps|instagram\.com|pecompressores\.com\.br' || true)
+          if [ -n "$externos" ]; then
+            echo "::error::Recurso externo não permitido:"; echo "$externos"; exit 1
+          fi
+          echo "OK — sem dependência externa"
+
+      - name: Acessibilidade básica
+        run: |
+          python3 - <<'PY'
+          import re, sys
+          s = open("index.html", encoding="utf-8").read()
+          erros = []
+
+          for img in re.findall(r'<img\b[^>]*>', s):
+              if 'alt=' not in img: erros.append("img sem alt: " + img[:70])
+              if 'loading=' not in img: erros.append("img sem loading (lazy ou eager): " + img[:70])
+              if not re.search(r'width="\d+"', img): erros.append("img sem width/height: " + img[:70])
+
+          for a in re.findall(r'<a\b[^>]*target="_blank"[^>]*>', s):
+              if 'rel="noopener' not in a: erros.append("_blank sem rel noopener: " + a[:70])
+
+          for sec in re.findall(r'<section\b[^>]*>', s):
+              m = re.search(r'aria-labelledby="([^"]+)"', sec)
+              if not m: erros.append("section sem aria-labelledby: " + sec[:70])
+              elif f'id="{m.group(1)}"' not in s: erros.append("aria-labelledby quebrado: " + m.group(1))
+
+          for anc in set(re.findall(r'href="#([A-Za-z][\w-]*)"', s)):
+              if f'id="{anc}"' not in s: erros.append("âncora quebrada: #" + anc)
+
+          for lab in re.findall(r'<label for="([^"]+)"', s):
+              if f'id="{lab}"' not in s: erros.append("label órfã: " + lab)
+
+          for t in ["section","div","nav","ul","ol","li","form","dl","details","header","footer","main"]:
+              o = len(re.findall(rf"<{t}\b", s)); c = len(re.findall(rf"</{t}>", s))
+              if o != c: erros.append(f"<{t}> desbalanceado: {o} abre / {c} fecha")
+
+          if "overflow:hidden" not in re.search(r'\.marquee\{[^}]*\}', s).group(0):
+              erros.append(".marquee sem overflow:hidden — reintroduz rolagem horizontal")
+
+          if erros:
+              for e in dict.fromkeys(erros): print("::error::" + e)
+              sys.exit(1)
+          print("OK — %d imagens, estrutura íntegra" % len(re.findall(r'<img\b', s)))
+          PY

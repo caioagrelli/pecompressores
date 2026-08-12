@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Falha de segurança
+    url: https://github.com/caioagrelli/pecompressores/security/policy
+    about: Não abra issue pública. Siga a política de segurança.
+  - name: Atendimento comercial
+    url: https://wa.me/5581989031791
+    about: Orçamento, peça ou máquina parada — fale direto no WhatsApp.
