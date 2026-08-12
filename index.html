@@ -157,9 +157,9 @@ svg{display:block;}
    HEADER
    ============================================================ */
 .header{position:sticky;top:0;z-index:100;background:#000000E8;backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
-.header__inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s2);min-height:68px;}
-.brand{display:inline-flex;align-items:center;text-decoration:none;}
-.brand__logo{width:auto;height:38px;}
+.header__inner{display:flex;align-items:center;align-content:center;justify-content:space-between;flex-wrap:wrap;gap:var(--s2);min-height:68px;}
+.brand{display:inline-flex;align-items:center;min-height:48px;text-decoration:none;}
+.brand__logo{width:auto;height:38px;display:block;}
 .brand__logo--footer{height:44px;}
 @media (min-width:768px){.brand__logo{height:44px;}.brand__logo--footer{height:52px;}}
 .header__side{display:flex;align-items:center;gap:.625rem;}
@@ -774,7 +774,7 @@ body{padding-bottom:80px;}
 
     <div class="wrap hero__inner">
       <div>
-        <p class="pill"><span class="dot" aria-hidden="true"></span> Atendimento emergencial · linha parada</p>
+        <p class="pill"><span class="dot" aria-hidden="true"></span> Pernambuco Compressores · service multimarca desde o Recife</p>
         <h1 class="d1 hero__title" id="hero-title">
           Compressor parado<br>
           <em class="tint-sky">para a fábrica inteira.</em>
